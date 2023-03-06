@@ -20,7 +20,7 @@ final class GeneratorTest extends TestCase
         $generator = new Generator;
         $provider = new FooProvider();
         $generator->addProvider($provider);
-        $this->assertInternalType('callable', $generator->getFormatter('fooFormatter'));
+        $this->assertIsCallable($generator->getFormatter('fooFormatter'));
     }
 
     public function testGetFormatterReturnsCorrectFormatter()
@@ -37,6 +37,8 @@ final class GeneratorTest extends TestCase
      */
     public function testGetFormatterThrowsExceptionOnIncorrectProvider()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = new Generator;
         $generator->getFormatter('fooFormatter');
     }
@@ -46,6 +48,8 @@ final class GeneratorTest extends TestCase
      */
     public function testGetFormatterThrowsExceptionOnIncorrectFormatter()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = new Generator;
         $provider = new FooProvider();
         $generator->addProvider($provider);
