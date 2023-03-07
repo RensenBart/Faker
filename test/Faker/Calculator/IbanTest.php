@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 final class IbanTest extends TestCase
 {
 
-    public function checksumProvider()
+    public static function checksumProvider(): array
     {
         return array(
             array('AL47212110090000000235698741',           '47'),
@@ -89,7 +89,7 @@ final class IbanTest extends TestCase
         $this->assertEquals($checksum, Iban::checksum($iban), $iban);
     }
 
-    public function validatorProvider()
+    public static function validatorProvider(): array
     {
         return array(
             array('AL47212110090000000235698741',           true),
@@ -239,7 +239,7 @@ final class IbanTest extends TestCase
         $this->assertEquals($isValid, Iban::isValid($iban), $iban);
     }
 
-    public function alphaToNumberProvider()
+    public static function alphaToNumberProvider(): array
     {
         return array(
             array('A', 10),
@@ -279,7 +279,7 @@ final class IbanTest extends TestCase
         $this->assertEquals($number, Iban::alphaToNumber($letter), $letter);
     }
 
-    public function mod97Provider()
+    public static function mod97Provider(): array
     {
         // Large numbers
         $return = array(

@@ -26,7 +26,7 @@ final class InternetTest extends TestCase
         $this->faker = $faker;
     }
 
-    public function localeDataProvider()
+    public function localeDataProvider(): array
     {
         $providerPath = realpath(__DIR__ . '/../../../src/Faker/Provider');
         $localePaths = array_filter(glob($providerPath . '/*', GLOB_ONLYDIR));
@@ -147,7 +147,7 @@ final class InternetTest extends TestCase
 
     public function testIpv4NotLocalNetwork()
     {
-        $this->assertNotRegExp('/\A0\./', $this->faker->ipv4());
+        $this->assertDoesNotMatchRegularExpression('/\A0\./', $this->faker->ipv4());
     }
 
     public function testIpv4NotBroadcast()

@@ -146,7 +146,7 @@ final class ProviderOverrideTest extends TestCase
     /**
      * @return array
      */
-    public function localeDataProvider()
+    public function localeDataProvider(): array
     {
         $locales = $this->getAllLocales();
         $data = array();

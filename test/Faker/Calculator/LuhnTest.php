@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 final class LuhnTest extends TestCase
 {
 
-    public function checkDigitProvider()
+    public static function checkDigitProvider(): array
     {
         return array(
             array('7992739871', '3'),
@@ -35,7 +35,7 @@ final class LuhnTest extends TestCase
         $this->assertEquals($checkDigit, Luhn::computeCheckDigit($partialNumber));
     }
 
-    public function validatorProvider(): array
+    public static function validatorProvider(): array
     {
         return array(
             array('79927398710', false),

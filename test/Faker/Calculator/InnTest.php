@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 final class InnTest extends TestCase
 {
 
-    public function checksumProvider()
+    public static function checksumProvider(): array
     {
         return array(
             array('143525744', '4'),
@@ -27,7 +27,7 @@ final class InnTest extends TestCase
         $this->assertEquals($checksum, Inn::checksum($inn), $inn);
     }
 
-    public function validatorProvider()
+    public static function validatorProvider(): array
     {
         return array(
             array('5902179757', true),

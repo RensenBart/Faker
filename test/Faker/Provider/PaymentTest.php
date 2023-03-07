@@ -25,7 +25,7 @@ final class PaymentTest extends TestCase
         $this->faker = $faker;
     }
 
-    public function localeDataProvider()
+    public function localeDataProvider(): array
     {
         $providerPath = realpath(__DIR__ . '/../../../src/Faker/Provider');
         $localePaths = array_filter(glob($providerPath . '/*', GLOB_ONLYDIR));

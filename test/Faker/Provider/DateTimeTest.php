@@ -195,7 +195,7 @@ final class DateTimeTest extends TestCase
         $this->assertEquals(new \DateTimeZone($this->defaultTz), $date->getTimezone());
     }
 
-    public function providerDateTimeBetween()
+    public static function providerDateTimeBetween(): array
     {
         return array(
             array('-1 year', false),
@@ -229,7 +229,7 @@ final class DateTimeTest extends TestCase
         }
     }
 
-    public function providerDateTimeInInterval()
+    public static function providerDateTimeInInterval(): array
     {
         return array(
             array('-1 year', '+5 days', true),

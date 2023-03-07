@@ -316,7 +316,7 @@ final class BaseTest extends TestCase
         $this->assertMatchesRegularExpression('/foo.Ba.r/', BaseProvider::asciify('foo*Ba*r'));
     }
 
-    public function regexifyBasicDataProvider()
+    public static function regexifyBasicDataProvider(): array
     {
         return array(
             array('azeQSDF1234', 'azeQSDF1234', 'does not change non regex chars'),
@@ -334,7 +334,7 @@ final class BaseTest extends TestCase
         $this->assertEquals($output, BaseProvider::regexify($input), $message);
     }
 
-    public function regexifyDataProvider()
+    public static function regexifyDataProvider(): array
     {
         return array(
             array('\d', 'numbers'),

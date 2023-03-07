@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TCNoTest extends TestCase
 {
-    public function checksumProvider()
+    public static function checksumProvider(): array
     {
         return array(
             array('553006348', '82'),
@@ -28,7 +28,7 @@ final class TCNoTest extends TestCase
         $this->assertEquals($checksum, TCNo::checksum($tcNo), $tcNo);
     }
 
-    public function validatorProvider()
+    public static function validatorProvider(): array
     {
         return array(
             array('22978160678', true),
