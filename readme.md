@@ -1,6 +1,11 @@
 # Faker
 
-[![Latest Stable Version](http://poser.pugx.org/rensenbart/faker/v)](https://packagist.org/packages/rensenbart/faker) [![Total Downloads](http://poser.pugx.org/rensenbart/faker/downloads)](https://packagist.org/packages/rensenbart/faker) [![Latest Unstable Version](http://poser.pugx.org/rensenbart/faker/v/unstable)](https://packagist.org/packages/rensenbart/faker) [![License](http://poser.pugx.org/rensenbart/faker/license)](https://packagist.org/packages/rensenbart/faker) [![PHP Version Require](http://poser.pugx.org/rensenbart/faker/require/php)](https://packagist.org/packages/rensenbart/faker)
+[![Latest Stable Version](http://poser.pugx.org/rensenbart/faker/v)](https://packagist.org/packages/rensenbart/faker) 
+[![Total Downloads](http://poser.pugx.org/rensenbart/faker/downloads)](https://packagist.org/packages/rensenbart/faker) 
+[![Latest Unstable Version](http://poser.pugx.org/rensenbart/faker/v/unstable)](https://packagist.org/packages/rensenbart/faker) 
+[![License](http://poser.pugx.org/rensenbart/faker/license)](https://packagist.org/packages/rensenbart/faker) 
+[![PHP Version Require](http://poser.pugx.org/rensenbart/faker/require/php)](https://packagist.org/packages/rensenbart/faker)
+
 Faker is a PHP library that generates fake data for you. Whether you need to bootstrap your database, create good-looking XML documents, fill-in your persistence to stress test it, or anonymize data taken from a production service, Faker is for you.
 
 I have forked this repository to keep it working with PHP 8
