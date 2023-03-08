@@ -7,11 +7,11 @@
 
 Faker is a PHP library that generates fake data for you. Whether you need to bootstrap your database, create good-looking XML documents, fill-in your persistence to stress test it, or anonymize data taken from a production service, Faker is for you.
 
+I have forked this repository to keep it working with PHP 8
+
 Faker is heavily inspired by Perl's [Data::Faker](http://search.cpan.org/~jasonk/Data-Faker-0.07/), and by ruby's [Faker](https://rubygems.org/gems/faker).
 
-Faker requires PHP >= 5.3.3.
-
-**Faker is archived**. Read the reasons behind this decision here: [https://marmelab.com/blog/2020/10/21/sunsetting-faker.html](https://marmelab.com/blog/2020/10/21/sunsetting-faker.html) 
+This fork of Faker requires PHP >= 8.0
 
 # Table of Contents
 
@@ -51,7 +51,7 @@ Faker requires PHP >= 5.3.3.
 ## Installation
 
 ```sh
-composer require fzaninotto/faker
+composer require rensenbart/faker
 ```
 
 ## Basic Usage
