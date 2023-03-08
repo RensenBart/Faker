@@ -146,9 +146,9 @@ final class ProviderOverrideTest extends TestCase
     /**
      * @return array
      */
-    public function localeDataProvider(): array
+    public static function localeDataProvider(): array
     {
-        $locales = $this->getAllLocales();
+        $locales = ProviderOverrideTest::getAllLocales();
         $data = array();
 
         foreach ($locales as $locale) {
@@ -166,7 +166,7 @@ final class ProviderOverrideTest extends TestCase
      *
      * @return array
      */
-    private function getAllLocales()
+    private static function getAllLocales(): array
     {
         static $locales = array();
 

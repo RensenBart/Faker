@@ -19,7 +19,7 @@ final class PersonTest extends TestCase
         $this->faker = $faker;
     }
 
-    public function provideSeedAndExpectedReturn()
+    public static function provideSeedAndExpectedReturn(): array
     {
         return array(
             array(1, '720727', '720727-5798'),

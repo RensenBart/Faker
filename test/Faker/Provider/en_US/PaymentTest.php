@@ -34,7 +34,7 @@ final class PaymentTest extends TestCase
         $this->assertEquals(Payment::calculateRoutingNumberChecksum($routingNo), $routingNo[8]);
     }
 
-    public function routingNumberProvider()
+    public static function routingNumberProvider(): array
     {
         return array(
             array('122105155'),

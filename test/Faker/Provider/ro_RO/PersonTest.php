@@ -31,7 +31,7 @@ final class PersonTest extends TestCase
         $this->faker->setDefaultTimezone();
     }
 
-    public function invalidGenderProvider()
+    public static function invalidGenderProvider(): array
     {
         return array(
             array('elf'),
@@ -41,7 +41,7 @@ final class PersonTest extends TestCase
         );
     }
 
-    public function invalidYearProvider()
+    public static function invalidYearProvider(): array
     {
         return array(
             array(1652),
@@ -51,7 +51,7 @@ final class PersonTest extends TestCase
         );
     }
 
-    public function validYearProvider()
+    public static function validYearProvider(): array
     {
         return array(
             array(null),
@@ -65,7 +65,7 @@ final class PersonTest extends TestCase
         );
     }
 
-    public function validCountyCodeProvider()
+    public static function validCountyCodeProvider(): array
     {
         return array(
             array('AB'), array('AR'), array('AG'), array('B'), array('BC'), array('BH'), array('BN'), array('BT'),
@@ -77,14 +77,14 @@ final class PersonTest extends TestCase
         );
     }
 
-    public function invalidCountyCodeProvider()
+    public static function invalidCountyCodeProvider(): array
     {
         return array(
             array('JK'), array('REW'), array('x'), array('FF'), array('aaaddadaada')
         );
     }
 
-    public function validInputDataProvider()
+    public static function validInputDataProvider(): array
     {
         return array(
             array(Person::GENDER_MALE, '1981-06-16','B2', true, '181061642'),

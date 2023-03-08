@@ -26,10 +26,12 @@ final class InternetTest extends TestCase
         $this->faker = $faker;
     }
 
-    public function localeDataProvider(): array
+    public static function localeDataProvider(): array
     {
         $providerPath = realpath(__DIR__ . '/../../../src/Faker/Provider');
         $localePaths = array_filter(glob($providerPath . '/*', GLOB_ONLYDIR));
+        $locales = array();
+
         foreach ($localePaths as $path) {
             $parts = explode('/', $path);
             $locales[] = array($parts[count($parts) - 1]);

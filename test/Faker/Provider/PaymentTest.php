@@ -25,7 +25,7 @@ final class PaymentTest extends TestCase
         $this->faker = $faker;
     }
 
-    public function localeDataProvider(): array
+    public static function localeDataProvider(): array
     {
         $providerPath = realpath(__DIR__ . '/../../../src/Faker/Provider');
         $localePaths = array_filter(glob($providerPath . '/*', GLOB_ONLYDIR));
@@ -51,7 +51,7 @@ final class PaymentTest extends TestCase
         $this->assertContains($this->faker->creditCardType, array('Visa', 'Visa Retired', 'MasterCard', 'American Express', 'Discover Card'));
     }
 
-    public function creditCardNumberProvider()
+    public static function creditCardNumberProvider(): array
     {
         return array(
             array('Discover Card', '/^6011\d{12}$/'),
@@ -90,7 +90,7 @@ final class PaymentTest extends TestCase
         $this->assertEquals(array('type', 'number', 'name', 'expirationDate'), array_keys($cardDetails));
     }
 
-    protected $ibanFormats = array(
+    protected static $ibanFormats = array(
         'AD' => '/^AD\d{2}\d{4}\d{4}[A-Z0-9]{12}$/',
         'AE' => '/^AE\d{2}\d{3}\d{16}$/',
         'AL' => '/^AL\d{2}\d{8}[A-Z0-9]{16}$/',
@@ -165,6 +165,7 @@ final class PaymentTest extends TestCase
 
         if (!isset($this->ibanFormats[$countryCode])) {
             // No IBAN format available
+            $this->markTestSkipped("No IBAN format available for $locale");
             return;
         }
 
@@ -185,10 +186,10 @@ final class PaymentTest extends TestCase
         $this->assertTrue(Iban::isValid($iban), "Checksum for $iban is invalid");
     }
 
-    public function ibanFormatProvider()
+    public static function ibanFormatProvider()
     {
         $return = array();
-        foreach ($this->ibanFormats as $countryCode => $regex) {
+        foreach (PaymentTest::$ibanFormats as $countryCode => $regex) {
             $return[] = array($countryCode, $regex);
         }
         return $return;
