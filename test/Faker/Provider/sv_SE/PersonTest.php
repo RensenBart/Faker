@@ -12,14 +12,14 @@ final class PersonTest extends TestCase
     /** @var Generator */
     protected $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Person($faker));
         $this->faker = $faker;
     }
 
-    public function provideSeedAndExpectedReturn()
+    public static function provideSeedAndExpectedReturn(): array
     {
         return array(
             array(1, '720727', '720727-5798'),

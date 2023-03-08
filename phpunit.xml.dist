@@ -6,17 +6,10 @@
     bootstrap="vendor/autoload.php"
     colors="true"
     columns="max"
-    verbose="true"
 >
     <testsuites>
         <testsuite name="Faker Test Suite">
             <directory>./test/Faker/</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
 </phpunit>

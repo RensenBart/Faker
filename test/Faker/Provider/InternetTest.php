@@ -16,7 +16,7 @@ final class InternetTest extends TestCase
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Lorem($faker));
@@ -26,10 +26,12 @@ final class InternetTest extends TestCase
         $this->faker = $faker;
     }
 
-    public function localeDataProvider()
+    public static function localeDataProvider(): array
     {
         $providerPath = realpath(__DIR__ . '/../../../src/Faker/Provider');
         $localePaths = array_filter(glob($providerPath . '/*', GLOB_ONLYDIR));
+        $locales = array();
+
         foreach ($localePaths as $path) {
             $parts = explode('/', $path);
             $locales[] = array($parts[count($parts) - 1]);
@@ -52,7 +54,7 @@ final class InternetTest extends TestCase
         $this->loadLocalProviders($locale);
         $pattern = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
         $emailAddress = $this->faker->email();
-        $this->assertRegExp($pattern, $emailAddress);
+        $this->assertMatchesRegularExpression($pattern, $emailAddress);
     }
 
     /**
@@ -67,7 +69,7 @@ final class InternetTest extends TestCase
         $this->loadLocalProviders($locale);
         $pattern = '/^[A-Za-z0-9]+([._][A-Za-z0-9]+)*$/';
         $username = $this->faker->username();
-        $this->assertRegExp($pattern, $username);
+        $this->assertMatchesRegularExpression($pattern, $username);
     }
 
     /**
@@ -82,7 +84,7 @@ final class InternetTest extends TestCase
         $this->loadLocalProviders($locale);
         $pattern = '/^[a-z]+(\.[a-z]+)+$/';
         $domainName = $this->faker->domainName();
-        $this->assertRegExp($pattern, $domainName);
+        $this->assertMatchesRegularExpression($pattern, $domainName);
     }
 
     /**
@@ -97,7 +99,7 @@ final class InternetTest extends TestCase
         $this->loadLocalProviders($locale);
         $pattern = '/^[a-z]+$/';
         $domainWord = $this->faker->domainWord();
-        $this->assertRegExp($pattern, $domainWord);
+        $this->assertMatchesRegularExpression($pattern, $domainWord);
     }
 
     public function loadLocalProviders($locale)
@@ -119,7 +121,7 @@ final class InternetTest extends TestCase
 
     public function testPasswordIsValid()
     {
-        $this->assertRegexp('/^.{6}$/', $this->faker->password(6, 6));
+        $this->assertMatchesRegularExpression('/^.{6}$/', $this->faker->password(6, 6));
     }
 
     public function testSlugIsValid()
@@ -147,7 +149,7 @@ final class InternetTest extends TestCase
 
     public function testIpv4NotLocalNetwork()
     {
-        $this->assertNotRegExp('/\A0\./', $this->faker->ipv4());
+        $this->assertDoesNotMatchRegularExpression('/\A0\./', $this->faker->ipv4());
     }
 
     public function testIpv4NotBroadcast()
@@ -162,6 +164,6 @@ final class InternetTest extends TestCase
 
     public function testMacAddress()
     {
-        $this->assertRegExp('/^([0-9A-F]{2}[:]){5}([0-9A-F]{2})$/i', Internet::macAddress());
+        $this->assertMatchesRegularExpression('/^([0-9A-F]{2}[:]){5}([0-9A-F]{2})$/i', Internet::macAddress());
     }
 }

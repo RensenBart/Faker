@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 final class LuhnTest extends TestCase
 {
 
-    public function checkDigitProvider()
+    public static function checkDigitProvider(): array
     {
         return array(
             array('7992739871', '3'),
@@ -31,11 +31,11 @@ final class LuhnTest extends TestCase
      */
     public function testComputeCheckDigit($partialNumber, $checkDigit)
     {
-        $this->assertInternalType('string', $checkDigit);
+        $this->assertIsString($checkDigit);
         $this->assertEquals($checkDigit, Luhn::computeCheckDigit($partialNumber));
     }
 
-    public function validatorProvider()
+    public static function validatorProvider(): array
     {
         return array(
             array('79927398710', false),
@@ -62,11 +62,11 @@ final class LuhnTest extends TestCase
     }
 
     /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument should be an integer.
      */
     public function testGenerateLuhnNumberWithInvalidPrefix()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         Luhn::generateLuhnNumber('abc');
     }
 }

@@ -23,7 +23,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     /**
      * @var array Norweign mobile number formats
      */
-    protected static $mobileFormats = array(
+    protected static array $mobileFormats = array(
         '+474#######',
         '+479#######',
         '9## ## ###',
@@ -32,7 +32,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
         '4#######',
     );
 
-    public function mobileNumber()
+    public function mobileNumber(): string
     {
         $format = static::randomElement(static::$mobileFormats);
 
